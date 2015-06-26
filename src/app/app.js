@@ -1,25 +1,26 @@
-angular.module('ngBoilerplate', [
+angular.module('photo-state', [
     'templates-app',
     'templates-common',
-    'ngBoilerplate.home',
-    'ngBoilerplate.about',
-    'ui.router'
+    'photo-state.home',
+    'photo-state.about',
+    'ui.router',
+    'navigation'
 ])
 
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/home');
     }])
 
     .run(function run() {
     })
 
-    .controller('AppCtrl', function AppCtrl($scope, $location) {
+    .controller('AppCtrl', ['$scope', '$location', function AppCtrl($scope, $location) {
         $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
             if (angular.isDefined(toState.data.pageTitle)) {
                 $scope.pageTitle = toState.data.pageTitle + ' | ngBoilerplate';
             }
         });
-    })
+    }])
 
 ;
 

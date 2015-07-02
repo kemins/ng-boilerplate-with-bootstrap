@@ -1,5 +1,5 @@
 (function () {
-    angular.module('us-elements.navigation', [])
+    angular.module('photo-state.navigation', [])
 
         .directive('navigationBar', function () {
             return {

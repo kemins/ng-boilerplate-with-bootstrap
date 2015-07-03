@@ -8,6 +8,7 @@
         'photo-state.signup',
         'photo-state.navigation',
         'photo-state.dropdowns',
+        'photo-state.constants',
         'ui.bootstrap.showErrors'
     ])
 
@@ -19,10 +20,11 @@
         .run(function run() {
         })
 
-        .controller('AppCtrl', ['$scope', '$location', AppCtrl]);
+        .controller('AppCtrl', ['$scope', '$location', 'appConfig', AppCtrl]);
 
-    function AppCtrl($scope, $location) {
+    function AppCtrl($scope, $location, appConfig) {
 
+        var self = this;
         init();
 
         function init() {
@@ -31,6 +33,8 @@
                     $scope.pageTitle = toState.data.pageTitle + ' | Photo-State';
                 }
             });
+
+            self.INPUT_MAX_CHARS = appConfig.inputMaxChars;
         }
     }
 })

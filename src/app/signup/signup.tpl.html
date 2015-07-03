@@ -7,7 +7,7 @@
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="firstNameInput" id="firstNameInput"
                        placeholder="First Name"
-                       ng-model="signUpCtrl.user.firstName" required>
+                       ng-model="signUpCtrl.user.firstName" required maxlength="{{::appCtrl.INPUT_MAX_CHARS}}" ng-minlength="2">
 
                 <ng-messages for="userFom.firstNameInput.$error"
                              ng-if="userFom.firstNameInput.$touched || userFom.$submitted">
@@ -22,7 +22,7 @@
 
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="lastNameInput" name="lastNameInput" placeholder="Last Name"
-                       ng-model="signUpCtrl.user.lastName" required>
+                       ng-model="signUpCtrl.user.lastName" required maxlength="{{::appCtrl.INPUT_MAX_CHARS}}" ng-minlength="2">
 
                 <ng-messages for="userFom.lastNameInput.$error"
                              ng-if="userFom.lastNameInput.$touched || userFom.$submitted">
@@ -37,7 +37,7 @@
 
             <div class="col-sm-10">
                 <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="Email"
-                       ng-model="signUpCtrl.user.email" required>
+                       ng-model="signUpCtrl.user.email" required maxlength="{{::appCtrl.INPUT_MAX_CHARS}}">
 
                 <ng-messages for="userFom.emailInput.$error"
                              ng-if="userFom.emailInput.$touched || userFom.$submitted">
@@ -52,7 +52,7 @@
             <div class="col-sm-10">
                 <input type="password" class="form-control" id="passwordInput" name="passwordInput"
                        placeholder="Password"
-                       ng-model="signUpCtrl.user.password" required>
+                       ng-model="signUpCtrl.user.password" required maxlength="{{::appCtrl.INPUT_MAX_CHARS}}">
 
                 <ng-messages for="userFom.passwordInput.$error"
                              ng-if="userFom.passwordInput.$touched || userFom.$submitted">
@@ -68,7 +68,7 @@
             <div class="col-sm-10">
                 <input type="password" class="form-control" id="confirmPasswordInput" name="confirmPasswordInput"
                        placeholder="Confrim Password"
-                       ng-model="signUpCtrl.confirmPassword" required>
+                       ng-model="signUpCtrl.confirmPassword" required maxlength="{{::appCtrl.INPUT_MAX_CHARS}}">
 
                 <ng-messages for="userFom.confirmPasswordInput.$error"
                              ng-if="userFom.passwordInput.$touched || userFom.$submitted">

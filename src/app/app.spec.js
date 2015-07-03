@@ -7,7 +7,9 @@ describe( 'AppCtrl', function() {
     beforeEach( inject( function( $controller, _$location_, $rootScope ) {
       $location = _$location_;
       $scope = $rootScope.$new();
-      AppCtrl = $controller( 'AppCtrl', { $location: $location, $scope: $scope });
+      config = {};
+      config.inputMaxChars = 20;
+      AppCtrl = $controller( 'AppCtrl', { $location: $location, $scope: $scope, appConfig: config });
     }));
 
     it( 'should pass a dummy test', inject( function() {

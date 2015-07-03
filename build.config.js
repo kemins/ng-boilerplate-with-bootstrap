@@ -69,7 +69,8 @@ module.exports = {
       'vendor/angular-ui-utils/modules/route/route.js',
       'vendor/jquery/dist/jquery.min.js',
       'vendor/bootstrap/dist/js/bootstrap.min.js',
-      'vendor/angular-bootstrap-show-errors/src/showErrors.min.js'
+      'vendor/angular-bootstrap-show-errors/src/showErrors.min.js',
+      'vendor/angular-messages/angular-messages.js'
     ],
     css: [
     ],

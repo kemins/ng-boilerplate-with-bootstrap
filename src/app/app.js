@@ -7,8 +7,9 @@
         'photo-state.home',
         'photo-state.signup',
         'photo-state.navigation',
-        'photo-state.dropdowns',
         'photo-state.constants',
+        'photo-state.common-validators',
+        'photo-state.recaptcha',
         'ui.bootstrap.showErrors'
     ])
 

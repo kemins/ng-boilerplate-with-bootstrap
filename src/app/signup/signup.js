@@ -1,6 +1,7 @@
 (function () {
     angular.module('photo-state.signup', [
-        'ui.router'
+        'ui.router',
+        'restangular'
     ])
 
         .config(['$stateProvider', function config($stateProvider) {
@@ -13,13 +14,16 @@
             });
         }])
 
-        .controller('SingUpCtrl', ['$scope', '$log', SingUpCtrl]);
+        .factory('SignUpService', ['Restangular', SignUpService])
+        .controller('SingUpCtrl', ['$scope', '$log', 'SignUpService', SingUpCtrl]);
 
 
-    function SingUpCtrl($scope, $log) {
+    function SingUpCtrl($scope, $log, SignUpService) {
+
+        var self = this;
         this.genders = [{id: 1, label: 'Male', name: 'MALE'}, {id: 2, label: 'Female', name: 'FEMALE'}];
 
-        this.user  = {};
+        this.user = {};
         this.signUp = signUp;
 
         init();
@@ -29,7 +33,22 @@
 
         function signUp(isValid) {
             $scope.$broadcast('show-errors-check-validity');
-            $log.debug('Sign Up valid: ', isValid);
+
+            if (isValid) {
+                $log.debug(self.user);
+                SignUpService.signUp(self.user);
+            }
+        }
+
+    }
+
+    function SignUpService(Restangular) {
+        return {
+            signUp: signUp
+        };
+
+        function signUp(user) {
+            return Restangular.one('signUp').customPOST(user);
         }
 
     }

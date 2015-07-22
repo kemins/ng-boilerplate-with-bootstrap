@@ -5,8 +5,11 @@
     "angular": "~1.4",
     "angular-mocks": "~1.4",
     "bootstrap": "~3.3",
-    "angular-bootstrap": "~0.10.0",
-    "angular-ui-router": "~0.2"
+    "angular-bootstrap": "~0.13.0",
+    "angular-ui-router": "~0.2",
+    "restangular": "~1.5.1",
+    "underscore": "~1.8.3",
+    "angular-spinner": "~0.6.2"
   },
   "dependencies": {
     "angular-bootstrap-show-errors": "~2.3.0",

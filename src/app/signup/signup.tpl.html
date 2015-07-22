@@ -14,7 +14,7 @@
 
                 <ng-messages for="userForm.firstNameInput.$error"
                              ng-if="userForm.firstNameInput.$touched || userForm.$submitted">
-                    <div ng-messages-include="common-messages.tpl.html"></div>
+                    <div ng-messages-include="validators/validation-messages.tpl.html"></div>
                 </ng-messages>
             </div>
 
@@ -30,7 +30,7 @@
 
                 <ng-messages for="userForm.lastNameInput.$error"
                              ng-if="userForm.lastNameInput.$touched || userForm.$submitted">
-                    <div ng-messages-include="common-messages.tpl.html"></div>
+                    <div ng-messages-include="validators/validation-messages.tpl.html"></div>
                 </ng-messages>
             </div>
         </div>
@@ -46,7 +46,7 @@
 
                 <ng-messages for="userForm.emailInput.$error"
                              ng-if="userForm.emailInput.$touched || userForm.$submitted">
-                    <div ng-messages-include="common-messages.tpl.html"></div>
+                    <div ng-messages-include="validators/validation-messages.tpl.html"></div>
                 </ng-messages>
             </div>
         </div>
@@ -61,7 +61,7 @@
 
                 <ng-messages for="userForm.passwordInput.$error"
                              ng-if="userForm.passwordInput.$touched || userForm.$submitted">
-                    <div ng-messages-include="common-messages.tpl.html"></div>
+                    <div ng-messages-include="validators/validation-messages.tpl.html"></div>
                 </ng-messages>
             </div>
         </div>
@@ -106,7 +106,7 @@
                     <ng-message when="phMatch">
                         Doesn't match the password
                     </ng-message>
-                    <div ng-messages-include="common-messages.tpl.html"></div>
+                    <div ng-messages-include="validators/validation-messages.tpl.html"></div>
                 </ng-messages>
             </div>
         </div>
@@ -121,7 +121,7 @@
 
                 <ng-messages for="userForm.genderSelector.$error"
                              ng-if="userForm.genderSelector.$touched || userForm.$submitted">
-                    <div ng-messages-include="common-messages.tpl.html"></div>
+                    <div ng-messages-include="validators/validation-messages.tpl.html"></div>
                 </ng-messages>
             </div>
         </div>

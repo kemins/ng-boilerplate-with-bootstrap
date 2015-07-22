@@ -20,19 +20,24 @@
     <script type="text/javascript" src="<%= file %>"></script>
     <% }); %>
 
-    <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async
+            defer></script>
 
 
 </head>
 
 <body>
 
-<navigation-bar></navigation-bar>
+<div class="main-holder">
+    <navigation-bar></navigation-bar>
 
-<div ui-view class="content-holder"></div>
+    <div ui-view class="content-holder"></div>
 
-<footer-bar></footer-bar>
+    <span us-spinner="{radius:20, width:10, length: 1, lines: 15, radius: 40, corners: 1}"
+          class="block-activity-overlay" requests-spinner></span>
 
+    <footer-bar></footer-bar>
+</div>
 
 </body>
 </html>

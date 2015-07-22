@@ -1,0 +1,5 @@
+<div class="row service-fault-alert" ng-if="$root.serviceError.displayMessage">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-4">
+        <alert type="danger" class="fault-alert" close="close()">Service feedback: {{$root.serviceError.displayMessage}}</alert>
+    </div>
+</div>

@@ -11,7 +11,7 @@
         'photo-state.common-validators',
         'photo-state.recaptcha',
         'photo-state.terms-and-conditions',
-        'photo-state.animations',
+        'photo-state.feedbacks',
         'ui.bootstrap.showErrors',
         'ui.bootstrap',
         'restangular',
@@ -26,8 +26,28 @@
             RestangularProvider.setDefaultHttpFields({cache: false});
         }])
 
-        .run(function run() {
-        })
+        .run(['$rootScope', '$log', 'Restangular', function run($rootScope, $log, Restangular) {
+
+            $rootScope.serviceError = {};
+            Restangular.setErrorInterceptor(
+                function (response) {
+                    if (response.status != 200) {
+                        var message = '';
+                        if (response.status == 401) {
+                            message = 'Login required';
+                        } else if (response.status == 404) {
+                            message = 'Resource not available';
+                        } else {
+                            message = "Response received with HTTP error code: " + response.status;
+                        }
+
+                        $rootScope.serviceError.displayMessage = message;
+                        $log.error(message);
+                        //return false; // stop the promise chain
+                    }
+                }
+            );
+        }])
 
         .controller('AppCtrl', ['$scope', '$location', 'appConfig', '$modal', AppCtrl]);
 

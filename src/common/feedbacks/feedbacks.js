@@ -1,5 +1,5 @@
 (function () {
-    angular.module('photo-state.animations', [])
+    angular.module('photo-state.feedbacks', [])
 
         .directive('requestsSpinner', ['$http',
 
@@ -17,6 +17,22 @@
                                 elm.addClass('ng-hide');
                             }
                         });
+                    }
+                };
+            }
+        ])
+
+        .directive('serviceFaultAlert', ['$http', '$rootScope',
+
+            function ($http, $rootScope) {
+                return {
+                    restrict: 'E',
+                    scope: {},
+                    templateUrl: 'feedbacks/serviceFaultAlert.tpl.html',
+                    link: function ($scope, $element, $attrs) {
+                        $scope.close = function() {
+                            $rootScope.serviceError.displayMessage = null;
+                        };
                     }
                 };
             }

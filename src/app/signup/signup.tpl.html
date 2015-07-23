@@ -70,20 +70,23 @@
             <div class="col-sm-10 col-sm-offset-2">
                 <section class="boxed">
                     <h4>Password needs to contain at least:</h4>
-                    <ul>
+                    <ul class="list-unstyled password-requirements">
                         <li>
-                            <span class="status-icon"
-                                  ng-class="{'glyphicon glyphicon-ok': !(userForm.passwordInput.$error.minlength || userForm.passwordInput.$error.required)}"></span>
+                            <i class="fa"
+                                  ng-class="{'status-icon fa-check fa-lg': !(userForm.passwordInput.$error.minlength || userForm.passwordInput.$error.required),
+                                  'fa-circle': userForm.passwordInput.$error.minlength || userForm.passwordInput.$error.required}"></i>
                             8 characters
                         </li>
                         <li>
-                            <span class="status-icon"
-                                  ng-class="{'glyphicon glyphicon-ok': !(userForm.passwordInput.$error.phUpperCaseMinLength || userForm.passwordInput.$error.required)}"></span>
+                            <i class="status-icon fa"
+                                  ng-class="{'status-icon fa-check fa-lg': !(userForm.passwordInput.$error.phUpperCaseMinLength || userForm.passwordInput.$error.required),
+                                  'fa-circle': userForm.passwordInput.$error.phUpperCaseMinLength || userForm.passwordInput.$error.required}"></i>
                             1 uppercase letter
                         </li>
                         <li>
-                            <span class="status-icon"
-                                  ng-class="{'glyphicon glyphicon-ok': !(userForm.passwordInput.$error.phDigitsMinLength || userForm.passwordInput.$error.required)}"></span>
+                            <i class="status-icon fa"
+                                  ng-class="{'status-icon fa-check fa-lg': !(userForm.passwordInput.$error.phDigitsMinLength || userForm.passwordInput.$error.required),
+                                            'fa-circle': userForm.passwordInput.$error.phDigitsMinLength || userForm.passwordInput.$error.required}"></i>
                             1 number
                         </li>
                     </ul>
@@ -141,7 +144,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">Sign up</button>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
             </div>
         </div>
     </form>

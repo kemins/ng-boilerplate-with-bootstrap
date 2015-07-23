@@ -35,10 +35,24 @@
 
             if (isValid) {
                 $log.debug(self.user);
-                SignInService.signIn(self.user).then(function () {
+                var resPromise = SignInService.signIn(self.user);
+
+                resPromise.then(function () {
                     FeedbackService.showSuccessMessage('User signed in!');
+                    resetUser();
+                });
+
+                resPromise.finally(function () {
+                    $scope.$broadcast('reset-captcha', 'signInCaptcha');
                 });
             }
+        }
+
+        function resetUser() {
+            $scope.userForm.$setPristine();
+            $scope.userForm.$setUntouched();
+            $scope.$broadcast('show-errors-reset');
+            self.user = {};
         }
 
     }

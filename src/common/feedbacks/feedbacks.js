@@ -30,8 +30,43 @@
                     scope: {},
                     templateUrl: 'feedbacks/serviceFaultAlert.tpl.html',
                     link: function ($scope, $element, $attrs) {
-                        $scope.close = function() {
+                        $scope.close = function () {
                             $rootScope.serviceError.displayMessage = null;
+                        };
+                    }
+                };
+            }
+        ])
+
+        .factory('FeedbackService', ['$rootScope',
+
+            function ($rootScope) {
+                return {
+                    showSuccessMessage: showSuccessMessage,
+                    resetSuccessMessage: resetSuccessMessage
+                };
+
+                function showSuccessMessage(message) {
+                    $rootScope.successAlertMessage = message;
+                }
+
+                function resetSuccessMessage(message) {
+                    $rootScope.successAlertMessage = null;
+                }
+
+            }
+        ])
+
+        .directive('successAlert', ['FeedbackService',
+
+            function (FeedbackService) {
+                return {
+                    restrict: 'E',
+                    scope: {},
+                    templateUrl: 'feedbacks/successAlert.tpl.html',
+                    link: function ($scope, $element, $attrs) {
+                        $scope.close = function () {
+                            FeedbackService.resetSuccessMessage();
                         };
                     }
                 };

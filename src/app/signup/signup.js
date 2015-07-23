@@ -15,10 +15,10 @@
         }])
 
         .factory('SignUpService', ['Restangular', SignUpService])
-        .controller('SingUpCtrl', ['$scope', '$log', 'SignUpService', SingUpCtrl]);
+        .controller('SingUpCtrl', ['$scope', '$log', 'SignUpService', 'FeedbackService', SingUpCtrl]);
 
 
-    function SingUpCtrl($scope, $log, SignUpService) {
+    function SingUpCtrl($scope, $log, SignUpService, FeedbackService) {
 
         var self = this;
         this.genders = [{id: 1, label: 'Male', name: 'MALE'}, {id: 2, label: 'Female', name: 'FEMALE'}];
@@ -36,7 +36,9 @@
 
             if (isValid) {
                 $log.debug(self.user);
-                SignUpService.signUp(self.user);
+                SignUpService.signUp(self.user).then(function () {
+                    FeedbackService.showSuccessMessage('User successfully registered!');
+                });
             }
         }
 
@@ -48,7 +50,7 @@
         };
 
         function signUp(user) {
-            return Restangular.one('signUp').customPOST(user);
+            return Restangular.one('signup').customPOST(user);
         }
 
     }

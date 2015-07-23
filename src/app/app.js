@@ -22,7 +22,7 @@
             $urlRouterProvider.otherwise('/home');
             showErrorsConfigProvider.showSuccess(true);
 
-            RestangularProvider.setBaseUrl('/');
+            RestangularProvider.setBaseUrl('http://demo5139190.mockable.io/');
             RestangularProvider.setDefaultHttpFields({cache: false});
         }])
 

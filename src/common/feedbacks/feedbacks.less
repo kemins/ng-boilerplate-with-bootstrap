@@ -9,16 +9,32 @@
   height: 100%;
 }
 
+.success-alert {
+  .feedbackAlerts();
+  .alert {
+    .alertBox();
+  }
+
+}
+
 .service-fault-alert {
+  .feedbackAlerts();
+
+  .fault-alert {
+    .alertBox();
+  }
+}
+
+.feedbackAlerts() {
   position: fixed;
   bottom: 0px;
   padding: 0px;
   margin: 0px;
   width: 100%;
+}
 
-  .fault-alert {
-    width: 100%;
-    opacity: 0.9;
-    margin-bottom: 5px;
-  }
+.alertBox() {
+  width: 100%;
+  opacity: 0.9;
+  margin-bottom: 5px;
 }

@@ -8,7 +8,7 @@
                     restrict: 'E',
                     templateUrl: 'recaptcha/captcha.tpl.html',
                     link: function ($scope, $element, $attrs) {
-
+                        $scope.captchaID = $attrs.captchaId;
                     },
                     controller: ['$scope', '$log', 'vcRecaptchaService', 'appConfig', CaptchaCtrl],
                     controllerAs: 'captchaCtrl'
@@ -26,9 +26,9 @@
         init();
 
         function setResponse(response) {
-            $log.info('Response available');
+            $log.info('Response available for: %s', $scope.captchaID || 'not specified');
             $scope.response = response;
-            $scope.$emit('captchaChange', {
+            $scope.$emit('captcha-change', {
                 captchaID: $scope.captchaID,
                 widgetID: $scope.widgetId,
                 response: $scope.response
@@ -45,9 +45,9 @@
         }
 
         function init() {
-            $scope.$on('resetCaptcha', function (event, captchaID) {
+            $scope.$on('reset-captcha', function (event, captchaID) {
                 if (captchaID === $scope.captchaID) {
-                    $scope.reload();
+                    reload();
                 }
             });
         }

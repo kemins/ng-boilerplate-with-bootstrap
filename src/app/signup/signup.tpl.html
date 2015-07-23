@@ -130,7 +130,7 @@
             <label class="col-sm-2 control-label"></label>
 
             <div class="col-sm-10">
-                <ph-recaptcha></ph-recaptcha>
+                <ph-recaptcha captcha-id="signUpCaptcha"></ph-recaptcha>
                 <ng-messages for="userForm.$error" ng-if="userForm.$submitted">
                     <ng-message when="recaptcha">
                         Invalid captcha
@@ -145,5 +145,5 @@
             </div>
         </div>
     </form>
-    
+
 </div>

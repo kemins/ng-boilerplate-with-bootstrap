@@ -29,6 +29,13 @@
         init();
 
         function init() {
+            $scope.$on('captcha-change', function (event, captchaData) {
+                if (captchaData.captchaID == 'signUpCaptcha') {
+                    self.user.captcha = {};
+                    self.user.captcha.response = captchaData.response;
+                    self.user.captcha.widgetID = captchaData.widgetID;
+                }
+            });
         }
 
         function signUp(isValid) {
@@ -36,10 +43,23 @@
 
             if (isValid) {
                 $log.debug(self.user);
-                SignUpService.signUp(self.user).then(function () {
+                var resPromise = SignUpService.signUp(self.user);
+                resPromise.then(function () {
                     FeedbackService.showSuccessMessage('User successfully registered!');
+                    resetUser();
+                });
+                resPromise.finally(function () {
+                    $scope.$broadcast('reset-captcha', 'signUpCaptcha');
                 });
             }
+        }
+
+        function resetUser() {
+            $scope.userForm.$setPristine();
+            $scope.userForm.$setUntouched();
+            $scope.$broadcast('show-errors-reset');
+            self.user = {};
+            self.confirmPassword = null;
         }
 
     }

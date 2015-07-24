@@ -19,25 +19,46 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
+html {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   padding-bottom: 40px;
   color: #5a5a5a;
+  width: 100%;
+  height: 100%;
   margin: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
+  pading: 0px;
 
   .main-holder {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
+    display: table;
+    overflow: hidden;
     position: relative;
+
+    .root-content {
+      display: table-row;
+      height: 100%;
+      width: 100%;
+
+      > div {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 }
 
-/* Add media queries if needed*/
-.content-holder {
-  padding-top: 80px;
+navigation-bar, footer-bar {
+  display: table-row;
 }
 
 ng-messages {
@@ -49,15 +70,56 @@ ng-messages > div {
   font-style: italic;
 }
 
-.boxed{
+.boxed {
   padding: 0.75em;
   border: 1px solid @border-color;
 }
 
 .status-icon {
   color: @default-icon-color;
-  //font-size: @default-icon-size;
 }
+
+.view-container {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+}
+
+.view.ng-animate {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+
+.view.ng-leave {
+  transition: 0.3s linear all;
+  transform: translateX(0);
+}
+
+.view.ng-leave.ng-leave-active {
+  transform: translateX(-100%);
+}
+
+.view.ng-enter {
+  transition: 0.3s linear all;
+  transform: translateX(100%);
+}
+
+.view.ng-enter.ng-enter-active {
+  transform: translateX(0);
+}
+
+/*.view-anchor.out {
+  transition:2.6s linear all;
+  left:500px;
+}
+
+.view-anchor.in {
+  transition:2.6s linear all;
+}*/
 
 @import '../app/home/home.less';
 @import '../app/signup/signup.less';

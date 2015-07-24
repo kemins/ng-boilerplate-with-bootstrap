@@ -31,7 +31,12 @@
 <div class="main-holder">
     <navigation-bar></navigation-bar>
 
-    <div ui-view class="content-holder"></div>
+    <section class="root-content">
+        <div>
+            <div ui-view class="view-container view"></div>
+        </div>
+    </section>
+
 
     <span us-spinner="{radius:20, width:10, length: 1, lines: 15, radius: 40, corners: 1}"
           class="block-activity-overlay" requests-spinner></span>

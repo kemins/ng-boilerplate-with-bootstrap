@@ -1,6 +1,7 @@
 (function () {
     angular.module('photo-state', [
         'ngMessages',
+        'ngAnimate',
         'templates-app',
         'templates-common',
         'ui.router',

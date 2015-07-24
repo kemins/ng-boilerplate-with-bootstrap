@@ -76,7 +76,8 @@ module.exports = {
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'vendor/restangular/dist/restangular.min.js',
       'vendor/angular-spinner/angular-spinner.js',
-      'vendor/spin.js/spin.js'
+      'vendor/spin.js/spin.js',
+      'vendor/angular-animate/angular-animate.js'
     ],
     css: [
     ],

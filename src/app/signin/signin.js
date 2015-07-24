@@ -11,14 +11,14 @@
                 templateUrl: 'signin/signin.tpl.html',
                 data: {pageTitle: 'Sign In', name: 'signin'}
             })
-            . state('signin.password-recovering', {
-                url: "/password-recovering",
-                templateUrl: 'signin/forgot-password.tpl.html'
-            })
-            . state('signin.enter-credentials', {
-                url: '/signin',
-                templateUrl: 'signin/enter-credentials.tpl.html'
-            });
+                .state('signin.password-recovering', {
+                    url: "/password-recovering",
+                    templateUrl: 'signin/forgot-password.tpl.html'
+                })
+                .state('signin.enter-credentials', {
+                    url: '/signin',
+                    templateUrl: 'signin/enter-credentials.tpl.html'
+                });
         }])
 
         .factory('SignInService', ['Restangular', SignInService])
@@ -61,10 +61,15 @@
             $scope.$broadcast('show-errors-check-validity');
 
             if (isValid) {
-                SignInService.restorePassword(self.recoverPasswordEmail).then(function () {
-                    FeedbackService.showSuccessMessage('User signed in!');
+                var resPromise = SignInService.restorePassword(self.recoverPasswordEmail);
+
+                resPromise.then(function () {
+                    FeedbackService.showSuccessMessage('The mail with a new password has been sent to your email.');
                 });
 
+                resPromise.finally(function () {
+                    $scope.$broadcast('reset-captcha', 'resetPasswordCaptcha');
+                });
             }
         }
 
@@ -88,7 +93,7 @@
         }
 
         function restorePassword(email) {
-            return Restangular.one('signin').customPOST(email);
+            return Restangular.one('reset-password').customPOST(email);
         }
 
     }

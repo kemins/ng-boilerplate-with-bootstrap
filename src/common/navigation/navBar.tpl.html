@@ -16,15 +16,15 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a ui-sref="home">Home</a></li>
-                        <li><a ui-sref="signin">Sign In</a></li>
-                        <li><a ui-sref="signup">Sign Up</a></li>
+                        <li ng-class="{'active' : appCtrl.pageSysName == 'home'}"><a ui-sref="home">Home</a></li>
+                        <li ng-class="{'active': appCtrl.pageSysName == 'signin'}"><a
+                                ui-sref="signin.enter-credentials">Sign In</a></li>
+                        <li ng-class="{'active': appCtrl.pageSysName == 'signup'}"><a ui-sref="signup">Sign Up</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">Help <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#contact">Forgot Password</a></li>
-                                <li><a href="#faq">FAQ</a></li>
+                                <li><a ui-sref="signin.password-recovering">Forgot Password</a></li>
                                 <li><a href="#contact">Contact Us</a></li>
                             </ul>
                         </li>

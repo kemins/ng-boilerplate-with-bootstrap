@@ -26,7 +26,7 @@ angular.module( 'photo-state.home', [
     url: '/home',
     controller: 'HomeCtrl',
     templateUrl: 'home/home.tpl.html',
-    data:{ pageTitle: 'Home' }
+    data:{ pageTitle: 'Home', name: 'home' }
   });
 }])
 

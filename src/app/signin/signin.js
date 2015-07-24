@@ -6,11 +6,18 @@
 
         .config(['$stateProvider', function config($stateProvider) {
             $stateProvider.state('signin', {
-                url: '/signin',
                 controller: 'SignInCtrl',
                 controllerAs: 'signInCtrl',
                 templateUrl: 'signin/signin.tpl.html',
-                data: {pageTitle: 'Sign In'}
+                data: {pageTitle: 'Sign In', name: 'signin'}
+            })
+            . state('signin.password-recovering', {
+                url: "/password-recovering",
+                templateUrl: 'signin/forgot-password.tpl.html'
+            })
+            . state('signin.enter-credentials', {
+                url: '/signin',
+                templateUrl: 'signin/enter-credentials.tpl.html'
             });
         }])
 
@@ -24,6 +31,8 @@
 
         this.user = {};
         this.signIn = signIn;
+        this.restorePassword = restorePassword;
+        this.recoverPasswordEmail = null;
 
         init();
 
@@ -48,6 +57,17 @@
             }
         }
 
+        function restorePassword(isValid) {
+            $scope.$broadcast('show-errors-check-validity');
+
+            if (isValid) {
+                SignInService.restorePassword(self.recoverPasswordEmail).then(function () {
+                    FeedbackService.showSuccessMessage('User signed in!');
+                });
+
+            }
+        }
+
         function resetUser() {
             $scope.userForm.$setPristine();
             $scope.userForm.$setUntouched();
@@ -59,11 +79,16 @@
 
     function SignInService(Restangular) {
         return {
-            signIn: signIn
+            signIn: signIn,
+            restorePassword: restorePassword
         };
 
         function signIn(user) {
             return Restangular.one('signin').customPOST(user);
+        }
+
+        function restorePassword(email) {
+            return Restangular.one('signin').customPOST(email);
         }
 
     }

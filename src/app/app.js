@@ -60,11 +60,14 @@
 
         this.openModalWindow = openModalWindow;
         this.openTermsAndConditionsDialog = openTermsAndConditionsDialog;
+        this.pageSysName = null;
 
         function init() {
+            self.pageSysName = self.pageSysName || 'home';
             $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
                 if (angular.isDefined(toState.data.pageTitle)) {
                     $scope.pageTitle = toState.data.pageTitle + ' | Photo-State';
+                    self.pageSysName = toState.data.name;
                 }
             });
 

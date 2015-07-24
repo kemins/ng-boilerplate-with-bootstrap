@@ -10,7 +10,7 @@
                 controller: 'SingUpCtrl',
                 controllerAs: 'signUpCtrl',
                 templateUrl: 'signup/signup.tpl.html',
-                data: {pageTitle: 'Sign Up'}
+                data: {pageTitle: 'Sign Up', name: 'signup'}
             });
         }])
 

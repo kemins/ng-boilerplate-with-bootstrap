@@ -8,6 +8,7 @@
         'photo-state.home',
         'photo-state.signup',
         'photo-state.signin',
+        'photo-state.help',
         'photo-state.navigation',
         'photo-state.constants',
         'photo-state.common-validators',

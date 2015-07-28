@@ -32,11 +32,23 @@
         this.user = {};
         this.signIn = signIn;
         this.restorePassword = restorePassword;
+        this.recoverPassword = {};
         this.recoverPasswordEmail = null;
 
         init();
 
         function init() {
+            $scope.$on('captcha-change', function (event, captchaData) {
+                if (captchaData.captchaID == 'signInCaptcha') {
+                    self.user.captcha = {};
+                    self.user.captcha.response = captchaData.response;
+                    self.user.captcha.widgetID = captchaData.widgetID;
+                } else if (captchaData.captchaID == 'resetPasswordCaptcha') {
+                    self.user.captcha = {};
+                    self.recoverPassword.captcha.response = captchaData.response;
+                    self.recoverPassword.captcha.widgetID = captchaData.widgetID;
+                }
+            });
         }
 
         function signIn(isValid) {
@@ -61,10 +73,11 @@
             $scope.$broadcast('show-errors-check-validity');
 
             if (isValid) {
-                var resPromise = SignInService.restorePassword(self.recoverPasswordEmail);
+                var resPromise = SignInService.restorePassword(self.recoverPassword);
 
                 resPromise.then(function () {
                     FeedbackService.showSuccessMessage('The mail with a new password has been sent to your email.');
+                    resetRecoverPassword();
                 });
 
                 resPromise.finally(function () {
@@ -78,6 +91,13 @@
             $scope.userForm.$setUntouched();
             $scope.$broadcast('show-errors-reset');
             self.user = {};
+        }
+
+        function resetRecoverPassword() {
+            $scope.restorePasswordForm.$setPristine();
+            $scope.restorePasswordForm.$setUntouched();
+            $scope.$broadcast('show-errors-reset');
+            self.recoverPassword = {};
         }
 
     }

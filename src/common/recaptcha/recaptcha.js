@@ -6,9 +6,16 @@
             function ($log, vcRecaptchaService, appConfig) {
                 return {
                     restrict: 'E',
+                    require: '^form',
                     templateUrl: 'recaptcha/captcha.tpl.html',
-                    link: function ($scope, $element, $attrs) {
+                    link: function ($scope, $element, $attrs, ngFormCtrl) {
+
+                        $scope.setCaptchaValidity = function(value) {
+                            ngFormCtrl.$setValidity('recaptcha',value);
+                        };
+
                         $scope.captchaID = $attrs.captchaId;
+
                     },
                     controller: ['$scope', '$log', 'vcRecaptchaService', 'appConfig', CaptchaCtrl],
                     controllerAs: 'captchaCtrl'
@@ -48,6 +55,7 @@
             $scope.$on('reset-captcha', function (event, captchaID) {
                 if (captchaID === $scope.captchaID) {
                     reload();
+                    $scope.setCaptchaValidity(false);
                 }
             });
         }

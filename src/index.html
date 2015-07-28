@@ -28,14 +28,17 @@
 
 <body>
 
-<div class="main-holder">
+<div class="main-wrapper">
     <navigation-bar></navigation-bar>
 
-    <section class="root-content">
-        <div>
-            <div ui-view class="view-container view"></div>
+    <div class="content-wrapper">
+
+        <div class="view-container ">
+            <div ui-view class="view"></div>
         </div>
-    </section>
+    </div>
+
+    <footer-bar></footer-bar>
 
 
     <span us-spinner="{radius:20, width:10, length: 1, lines: 15, radius: 40, corners: 1}"
@@ -43,8 +46,6 @@
 
     <success-alert></success-alert>
     <service-fault-alert></service-fault-alert>
-
-    <footer-bar></footer-bar>
 </div>
 
 </body>

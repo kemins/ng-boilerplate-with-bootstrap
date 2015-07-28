@@ -19,46 +19,49 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-html {
+html, body{
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
 body {
-  padding-bottom: 40px;
   color: #5a5a5a;
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-  pading: 0px;
 
-  .main-holder {
+  .main-wrapper {
     margin: 0;
     padding: 0;
+    position: relative;
     width: 100%;
     height: 100%;
-    display: table;
-    overflow: hidden;
-    position: relative;
-
-    .root-content {
-      display: table-row;
-      height: 100%;
-      width: 100%;
-
-      > div {
-        position: relative;
-        width: 100%;
-        height: 100%;
-      }
-    }
   }
+
+  .content-wrapper {
+    position: absolute;
+    width: 100%;
+    top: @top-nav-bar-height;
+    overflow-x: hidden;
+    overflow-y: auto;
+    bottom: @footer-height;
+  }
+
+  ui-view {
+    width: 100%;
+    height: 100%;
+  }
+
+}
+navigation-bar, footer-bar {
+  position: absolute;
+  width: 100%;
 }
 
-navigation-bar, footer-bar {
-  display: table-row;
+footer-bar {
+  bottom: 0;
+  position: fixed;
+  height: @footer-height;
 }
 
 ng-messages {
@@ -79,10 +82,11 @@ ng-messages > div {
   color: @default-icon-color;
 }
 
+.view {
+  width: 100%;
+  height: 100%;
+}
 .view-container {
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
   height: 100%;
   width: 100%;
 }
@@ -92,26 +96,41 @@ ng-messages > div {
   top: 0;
   right: 0;
   width: 100%;
+  height: 100%;
 }
 
 .view.ng-leave {
-  transition: 0.3s linear all;
-  transform: translateX(0);
+  .setTransition(0.5s linear all);
+  .translateElement(0);
 }
 
 .view.ng-leave.ng-leave-active {
-  transform: translateX(-100%);
+  .translateElement(-100%);
 }
 
 .view.ng-enter {
-  transition: 0.3s linear all;
-  transform: translateX(100%);
+  .setTransition(0.5s linear all);
+  .translateElement(100%);
 }
 
 .view.ng-enter.ng-enter-active {
-  transform: translateX(0);
+  .translateElement(0);
 }
 
+.translateElement(@x) {
+  -ms-transform: translate(@x); /* IE 9 */
+  -webkit-transform: translate(@x); /* Safari */
+  -moz-transform: translate(@x);
+  transform: translate(@x);
+}
+
+.setTransition(@transition) {
+  transition: @transition;
+  -ms-transition: @transition;
+  -webkit-transition: @transition;
+  -moz-transition: translate(@transition);
+
+}
 /*.view-anchor.out {
   transition:2.6s linear all;
   left:500px;

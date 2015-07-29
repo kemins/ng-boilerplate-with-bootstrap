@@ -77,7 +77,8 @@ module.exports = {
       'vendor/restangular/dist/restangular.min.js',
       'vendor/angular-spinner/angular-spinner.js',
       'vendor/spin.js/spin.js',
-      'vendor/angular-animate/angular-animate.js'
+      'vendor/angular-animate/angular-animate.js',
+      'vendor/angular-touch/angular-touch.js'
     ],
     css: [
     ],

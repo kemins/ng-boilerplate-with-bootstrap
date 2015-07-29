@@ -18,7 +18,8 @@
         'ui.bootstrap.showErrors',
         'ui.bootstrap',
         'restangular',
-        'angularSpinner'
+        'angularSpinner',
+        'ngTouch'
     ])
 
         .config(['$stateProvider', '$urlRouterProvider', 'showErrorsConfigProvider', 'RestangularProvider', function ($stateProvider, $urlRouterProvider, showErrorsConfigProvider, RestangularProvider) {

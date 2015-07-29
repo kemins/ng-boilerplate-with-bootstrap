@@ -1,15 +1,13 @@
 <div class="container-fluid">
 
     <carousel interval="homeCtrl.myInterval" no-wrap="homeCtrl.noWrapSlides" disable-animation="true">
-        <slide ng-repeat="slide in homeCtrl.slides" active="slide.active">
-            <img ng-src="{{slide.logo}}" style="margin:auto;">
+        <slide ng-repeat="slide in homeCtrl.pageData.slides" active="slide.active">
+            <img ng-src="{{slide.slide}}" style="margin:auto;">
 
             <div class="carousel-caption">
-                <h4>Slide {{$index}}</h4>
-
-                <p>{{slide.text}}</p>
+                <p>{{slide.title}}</p>
             </div>
         </slide>
     </carousel>
-
+    
 </div>

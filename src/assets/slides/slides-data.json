@@ -2,15 +2,27 @@
   "slides": [
     {
       "title": "Let us keep Your moments of life safely in calm.",
-      "slide": "assets/slides/slide1.png"
+      "href": "assets/slides/slide1-1024x250.png",
+      "xsHref": "assets/slides/slide1-534x250.png",
+      "smHref": "assets/slides/slide1-640x250.png",
+      "msHref": "assets/slides/slide1-800x250.png",
+      "lgHref": "assets/slides/slide1-1024x250.png"
     },
     {
       "title": "Share Your captures with Your Dears...",
-      "slide": "assets/slides/slide2.png"
+      "href": "assets/slides/slide2-1024x250.png",
+      "xsHref": "assets/slides/slide2-534x250.png",
+      "smHref": "assets/slides/slide2-640x250.png",
+      "msHref": "assets/slides/slide2-800x250.png",
+      "lgHref": "assets/slides/slide2-1024x250.png"
     },
     {
       "title": "Don't let your memories to be lost.",
-      "slide": "assets/slides/slide3.png"
+      "href": "assets/slides/slide3-1024x250.png",
+      "xsHref": "assets/slides/slide3-534x250.png",
+      "smHref": "assets/slides/slide3-640x250.png",
+      "msHref": "assets/slides/slide3-800x250.png",
+      "lgHref": "assets/slides/slide3-1024x250.png"
     }
   ]
 }

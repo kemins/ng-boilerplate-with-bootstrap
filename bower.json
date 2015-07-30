@@ -17,6 +17,7 @@
     "angular-bootstrap-show-errors": "~2.3.0",
     "angular-messages": "~1.4.1",
     "angular-recaptcha": "~2.2.4",
-    "angular-touch": "~1.4.3"
+    "angular-touch": "~1.4.3",
+    "picturefill": "~2.3.1"
   }
 }

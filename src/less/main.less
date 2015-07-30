@@ -103,22 +103,24 @@ ng-messages > div {
   height: 100%;
 }
 
-.view.ng-leave {
-  .setTransition(0.5s ease-in-out);
+/*.view.ng-leave {
+  .setTransition(2.5s ease-in-out);
   .translateElement(0);
-}
+}*/
 
-.view.ng-leave.ng-leave-active {
+/*.view.ng-leave.ng-leave-active {
   .translateElement(-100%);
-}
+}*/
 
 .view.ng-enter {
-  .setTransition(0.5s ease-in-out);
-  .translateElement(100%);
+  .setTransition(1s ease-in-out);
+  opacity: 0;
+  //.translateElement(100%);
 }
 
 .view.ng-enter.ng-enter-active {
-  .translateElement(0);
+  //.translateElement(0);
+  opacity: 1;
 }
 
 .translateElement(@x) {

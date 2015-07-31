@@ -1,5 +1,6 @@
 angular.module('photo-state.home', [
-    'ui.router'
+    'ui.router',
+    'ngResize'
 ])
 
 
@@ -31,10 +32,15 @@ function HomeCtrl($scope, pageData) {
     this.noWrapSlides = false;
     this.slides = [];
     this.pageData = pageData;
+    this.resizeHandler = resizeHandler;
 
     init();
 
     function init() {
+    }
+
+    function resizeHandler(event) {
+        console.info("page resize has happened!");
     }
 
 }

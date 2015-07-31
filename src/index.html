@@ -28,14 +28,10 @@
 
 <body>
 
-<div class="main-wrapper">
     <navigation-bar></navigation-bar>
 
-    <div class="content-wrapper">
-
-        <div class="view-container ">
-            <div ui-view class="view"></div>
-        </div>
+    <div class="page-wrap">
+        <div ui-view class="view"></div>
     </div>
 
     <footer-bar></footer-bar>
@@ -46,7 +42,6 @@
 
     <success-alert></success-alert>
     <service-fault-alert></service-fault-alert>
-</div>
 
 </body>
 </html>

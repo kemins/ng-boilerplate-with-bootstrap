@@ -14,6 +14,7 @@ angular.module('photo-state', [
     'photo-state.recaptcha',
     'photo-state.terms-and-conditions',
     'photo-state.feedbacks',
+    'photo-state.common-filters',
     'ui.bootstrap.showErrors',
     'ui.bootstrap',
     'restangular',

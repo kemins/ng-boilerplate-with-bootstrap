@@ -1,22 +1,32 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-resize="homeCtrl.resizeHandler($event)">
 
-    <carousel interval="homeCtrl.myInterval" no-wrap="homeCtrl.noWrapSlides" disable-animation="true">
-        <slide ng-repeat="slide in homeCtrl.pageData.slides" active="slide.active" class="top-carousel">
+    <carousel interval="homeCtrl.myInterval" no-wrap="homeCtrl.noWrapSlides" disable-animation="true" class="top-carousel">
+        <slide ng-repeat="slide in homeCtrl.pageData.slides" active="slide.active">
 
             <picture class="expanded-container">
-                <!--[if IE 9]><video style="display: none;"><![endif]-->
-                <source srcset="{{slide.xsHref}}" media="(max-width: 550px)" />
-                <source srcset="{{slide.smHref}}" media="(min-width: 551px) and (max-width: 645px)" />
-                <source srcset="{{slide.msHref}}" media="(min-width: 646px) and (max-width: 810px)" />
+                <!--[if IE 9]>
+                <video style="display: none;"><![endif]-->
+                <source srcset="{{slide.xsHref}}" media="(max-width: 550px)"/>
+                <source srcset="{{slide.smHref}}" media="(min-width: 551px) and (max-width: 645px)"/>
+                <source srcset="{{slide.msHref}}" media="(min-width: 646px) and (max-width: 810px)"/>
                 <source srcset="{{slide.lgHref}}" media="(min-width: 811px)"/>
                 <!--[if IE 9]></video><![endif]-->
                 <img srcset="{{slide.href}}" alt="{{slide.title}}" style="height: 100%"/>
             </picture>
 
             <div class="carousel-caption">
-                <p>{{slide.title}}</p>
+                <h3>{{slide.title}}</h3>
             </div>
         </slide>
     </carousel>
+
+    <div class="container-fluid">
+
+        <div ng-repeat="slide in homeCtrl.pageData.slides" class="bs-callout"
+             ng-class="{'bs-callout-primary': $index % 2 == 0, 'bs-callout-info': $index % 2 != 0}">
+            <h4>{{slide.title}}</h4>
+            <p ng-bind-html="slide.description | phUnsafe"></p>
+        </div>
+    </div>
 
 </div>

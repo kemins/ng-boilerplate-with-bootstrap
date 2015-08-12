@@ -41,8 +41,8 @@ function RangesCtrl($scope, rangesData) {
         self.rangeTableSettings = {
             colHeaders: self.rangesData.cols,
             stretchH: "all",
-            readOnly: true,
-            afterChange: self.rangeAfterChangeHandler
+            readOnly: false,
+            afterChange: rangeAfterChangeHandler
         };
     }
 

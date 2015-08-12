@@ -1,5 +1,5 @@
-angular.module('photo-state.common-filters', ['ngSanitize'])
+angular.module('ftw.common-filters', ['ngSanitize'])
 
-    .filter('phUnsafe', ['$sce', function ($sce) {
+    .filter('safeHTML', ['$sce', function ($sce) {
         return $sce.trustAsHtml;
     }]);

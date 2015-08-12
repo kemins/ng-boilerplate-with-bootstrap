@@ -1,5 +1,5 @@
 (function () {
-    angular.module('photo-state.terms-and-conditions', [])
+    angular.module('ftw.terms-and-conditions', [])
 
         .config([function config($stateProvider) {
         }])

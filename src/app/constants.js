@@ -1,5 +1,5 @@
 (function () {
-    angular.module('photo-state.constants', [])
+    angular.module('ftw.constants', [])
 
         .config([function () {
         }])
@@ -8,8 +8,7 @@
         })
 
         .constant('appConfig', {
-            inputMaxChars: 200,
-            reCaptchaKey: '6LeiXQATAAAAANVgwk6VuUbkFHp8_RYa54tGY8dr'
+            inputMaxChars: 200
         });
 })
 ();

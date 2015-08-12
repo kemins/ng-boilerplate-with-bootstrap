@@ -1,29 +1,23 @@
-angular.module('photo-state', [
+angular.module('ftw', [
     'ngMessages',
     'ngAnimate',
     'templates-app',
     'templates-common',
     'ui.router',
-    'photo-state.home',
-    'photo-state.signup',
-    'photo-state.signin',
-    'photo-state.help',
-    'photo-state.navigation',
-    'photo-state.constants',
-    'photo-state.common-validators',
-    'photo-state.recaptcha',
-    'photo-state.terms-and-conditions',
-    'photo-state.feedbacks',
-    'photo-state.common-filters',
+    'ftw.navigation',
+    'ftw.common-validators',
+    'ftw.terms-and-conditions',
+    'ftw.feedbacks',
+    'ftw.common-filters',
     'ui.bootstrap.showErrors',
     'ui.bootstrap',
     'restangular',
     'angularSpinner',
-    'ngTouch'
+    'ftw.ranges'
 ])
 
     .config(['$stateProvider', '$urlRouterProvider', 'showErrorsConfigProvider', 'RestangularProvider', function ($stateProvider, $urlRouterProvider, showErrorsConfigProvider, RestangularProvider) {
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/ranges');
         showErrorsConfigProvider.showSuccess(true);
 
         RestangularProvider.setBaseUrl('http://demo5139190.mockable.io/');
@@ -53,11 +47,11 @@ angular.module('photo-state', [
         );
     }])
 
-    .controller('AppCtrl', ['$scope', '$location', 'appConfig', '$modal', AppCtrl])
+    .controller('AppCtrl', ['$scope', '$location', '$modal', AppCtrl])
 
     .factory('LocalRestangular', ['Restangular', LocalRestangular]);
 
-function AppCtrl($scope, $location, appConfig, $modal) {
+function AppCtrl($scope, $location, $modal) {
 
     var self = this;
 
@@ -75,8 +69,6 @@ function AppCtrl($scope, $location, appConfig, $modal) {
                 self.pageSysName = toState.data.name;
             }
         });
-
-        self.INPUT_MAX_CHARS = appConfig.inputMaxChars;
     }
 
     function openModalWindow(options) {

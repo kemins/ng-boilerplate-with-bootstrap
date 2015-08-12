@@ -1,5 +1,5 @@
 (function () {
-    angular.module('photo-state.navigation', [])
+    angular.module('ftw.navigation', [])
 
         .directive('navigationBar', function () {
             return {

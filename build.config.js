@@ -65,7 +65,6 @@ module.exports = {
       'vendor/underscore/underscore-min.js',
       'vendor/angular/angular.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
-      'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
       'vendor/angular-ui-utils/modules/route/route.js',
       'vendor/jquery/dist/jquery.min.js',
@@ -77,13 +76,13 @@ module.exports = {
       'vendor/restangular/dist/restangular.min.js',
       'vendor/angular-spinner/angular-spinner.js',
       'vendor/spin.js/spin.js',
-      'vendor/angular-animate/angular-animate.js',
-      'vendor/angular-touch/angular-touch.js',
-      'vendor/picturefill/dist/picturefill.min.js',
       'vendor/angular-sanitize/angular-sanitize.js',
-      'vendor/ng-resize/ngresize.min.js'
+      'vendor/handsontable/dist/handsontable.full.js',
+      'vendor/ngHandsontable/dist/ngHandsontable.js',
+      'vendor/angular-animate/angular-animate.js',
     ],
     css: [
+      'vendor/handsontable/dist/handsontable.full.css'
     ],
     assets: [
       'vendor/bootstrap/dist/fonts/glyphicons-halflings-regular.eot',

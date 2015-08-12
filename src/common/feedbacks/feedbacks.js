@@ -1,4 +1,4 @@
-angular.module('photo-state.feedbacks', [])
+angular.module('ftw.feedbacks', [])
 
     .directive('requestsSpinner', ['$http',
 

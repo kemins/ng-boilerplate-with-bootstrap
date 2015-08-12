@@ -1,6 +1,6 @@
 angular.module('ftw.ranges', [
     'ui.router',
-    'ngHandsontable'
+    'ftw.data-sheet'
 ])
 
 
@@ -30,7 +30,6 @@ function RangesCtrl($scope, rangesData) {
 
     this.rangesData = rangesData;
     this.rangeTableSettings = {};
-    this.rangeAfterChangeHandler = rangeAfterChangeHandler;
 
     init();
 

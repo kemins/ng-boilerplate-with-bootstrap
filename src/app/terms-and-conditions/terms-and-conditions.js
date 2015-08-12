@@ -1,25 +1,23 @@
-(function () {
-    angular.module('ftw.terms-and-conditions', [])
+angular.module('ftw.terms-and-conditions', [])
 
-        .config([function config($stateProvider) {
-        }])
+    .config([function config($stateProvider) {
+    }])
 
-        .controller('TermsAndConditionsCtrl', ['$scope', '$log', '$modalInstance', TermsAndConditionsCtrl]);
+    .controller('TermsAndConditionsCtrl', ['$scope', '$log', '$modalInstance', TermsAndConditionsCtrl]);
 
 
-    function TermsAndConditionsCtrl($scope, $log, $modalInstance) {
+function TermsAndConditionsCtrl($scope, $log, $modalInstance) {
 
-        this.cancel = cancel;
+    this.cancel = cancel;
 
-        init();
+    init();
 
-        function init() {
-        }
-
-        function cancel() {
-            $modalInstance.dismiss('cancel');
-        }
-
+    function init() {
     }
-})();
+
+    function cancel() {
+        $modalInstance.dismiss('cancel');
+    }
+
+}
 

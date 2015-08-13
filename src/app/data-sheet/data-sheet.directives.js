@@ -4,16 +4,19 @@ angular.module('ftw.data-sheet.directives', ['ngHandsontable'])
             link: function (scope, element, attrs, hotTableCtrl) {
                 $log.debug('data sheet linking...');
 
-                scope.getHotInstance = function () {
-                    return $(element).handsontable('getInstance');
-                };
-
-                var instance = scope.getHotInstance();
+                scope.rowHeaders = scope.rowHeaders || false;
+                scope.hotScope = angular.element(element.find('hot-table')).isolateScope();
+                scope.hotInstance = scope.hotScope.hotInstance;
             },
+
             controller: 'DataSheetCtrl',
-            template: "<div hot-table></div>",
-            require: 'hotTable',
-            replace: true,
-            restrict: 'E'
+            controllerAs: 'dataSheetCtrl',
+            templateUrl: "data-sheet/data-sheet.tpl.html",
+            restrict: 'E',
+            scope: {
+                settings: '=',
+                datarows: '=',
+                rowHeaders: "=?",
+            }
         };
     }]);

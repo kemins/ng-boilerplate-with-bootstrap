@@ -46,8 +46,11 @@ function RangesCtrl($scope, rangesData) {
         };
     }
 
-    function rangeAfterChangeHandler(a, b, c, d) {
-        console.log('Range modified!');
+    function rangeAfterChangeHandler(changes, source) {
+
+        if (source !== 'loadData') {
+            console.log('Range modified!');
+        }
     }
 }
 

@@ -5,7 +5,22 @@ function DataSheetCtrl($log, $scope, settingFactory) {
 
     init();
 
+    /*
+    * Expose api to outside world
+    * */
+    this.updateSettings = updateSettings;
+
+    /*
+    *  Perform any initial operations inside.
+    * */
     function init() {
-        $log.debug('data sheet controller init');
+
+    }
+
+    /*
+    * Set new settings for hot table
+    * */
+    function updateSettings(settings) {
+        settingFactory.updateHandsontableSettings(scope.hotInstance, settings);
     }
 }

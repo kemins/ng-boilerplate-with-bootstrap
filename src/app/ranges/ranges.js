@@ -38,8 +38,15 @@ function RangesCtrl($scope, rangesData) {
     }
 
     function constructRangesTableSettings() {
+        self.rangeTableSettings.columns = [];
+
+        for (var i = 0; i < self.rangesData.cols.length; i++) {
+            self.rangeTableSettings.columns.push({title: self.rangesData.cols[i], type: 'text'});
+        }
+
         self.rangeTableSettings = {
             colHeaders: self.rangesData.cols,
+            columns: self.rangeTableSettings.columns,
             readOnly: false
         };
     }

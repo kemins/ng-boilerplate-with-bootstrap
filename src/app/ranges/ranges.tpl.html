@@ -17,9 +17,11 @@
     <!-- Test controls-->
     <input type="checkbox" ng-model="rangesCtrl.rangeTableSettings.readOnly">Readonly
 
-    <br><br><br>
+    &nbsp;&nbsp;&nbsp;
 
-    <input type="checkbox" ng-model="rangesCtrl.rangeTableSettings.readOnly">Readonly
+    <input type="checkbox" ng-model="rangesCtrl.rangeTableSettings.columns[1].readOnly">Readonly Column #2
+
+    {{rangesCtrl.rangeTableSettings.columns[1].readOnly}}
 
     <br><br><br>
 

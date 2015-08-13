@@ -44,8 +44,18 @@ body {
   .page-wrap:after {
     content: "";
     display: block;
+    position: relative;
     height: @footer-height;
   }
+
+  .expanded-container {
+    position: absolute;
+    top: @navbar-height;
+    bottom: @footer-height;
+    left: @grid-gutter-width/2;
+    right: @grid-gutter-width/2;
+  }
+
 
 }
 navigation-bar {
@@ -110,11 +120,6 @@ ng-messages > div {
   -webkit-transition: @transition;
   -moz-transition: translate(@transition);
 
-}
-
-.expanded-container {
-  width: 100%;
-  height: 100%;
 }
 
 @import 'callouts.less';

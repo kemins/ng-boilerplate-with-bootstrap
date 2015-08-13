@@ -1,3 +1,32 @@
-<ftw-data-sheet settings="rangesCtrl.rangeTableSettings"
-                datarows="rangesCtrl.rangesData.data">
-</ftw-data-sheet>
+<div class="expanded-container">
+
+    <style>
+        .table-wrapper {
+            height: 80%;
+            overflow: auto;
+        }
+    </style>
+
+    <div class="table-wrapper">
+        <ftw-data-sheet config="rangesCtrl.rangeTableSettings"
+                        datasource="rangesCtrl.rangesData.data">
+        </ftw-data-sheet>
+    </div>
+
+
+    <!-- Test controls-->
+    <input type="checkbox" ng-model="rangesCtrl.rangeTableSettings.readOnly">Readonly
+
+    <br><br><br>
+
+    <input type="checkbox" ng-model="rangesCtrl.rangeTableSettings.readOnly">Readonly
+
+    <br><br><br>
+
+    <button class="btn btn-primary" ng-click="updateSettings()">Reset settings</button>
+
+    <button class="btn btn-primary" ng-click="refreshDataSheet()">Re-render table</button>
+
+    <br><br><br>
+
+</div>

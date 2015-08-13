@@ -2,21 +2,25 @@ angular.module('ftw.data-sheet.directives', ['ngHandsontable'])
     .directive('ftwDataSheet', ['$log', 'settingFactory', function ($log, settingFactory) {
         return {
             link: function (scope, element, attrs, hotTableCtrl) {
-                $log.debug('data sheet linking...');
 
-                scope.rowHeaders = scope.rowHeaders || false;
-                scope.hotScope = angular.element(element.find('hot-table')).isolateScope();
-                scope.hotInstance = scope.hotScope.hotInstance;
+                var initOptions = {
+                    currentRowClassName: 'selected-row', stretchH: 'all',
+                    afterChange: scope.afterChangeHandler,
+                    readOnly: true,
+                    cells: scope.cellPropertiesFactory
+                };
+
+                scope.hotInstance = settingFactory.initializeHandsontable(element, initOptions);
             },
 
             controller: 'DataSheetCtrl',
             controllerAs: 'dataSheetCtrl',
-            templateUrl: "data-sheet/data-sheet.tpl.html",
+            template: "<div></div>",
             restrict: 'E',
+            replace: true,
             scope: {
-                settings: '=',
-                datarows: '=',
-                rowHeaders: "=?",
+                config: '=',
+                datasource: '='
             }
         };
     }]);

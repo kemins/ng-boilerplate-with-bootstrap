@@ -40,17 +40,8 @@ function RangesCtrl($scope, rangesData) {
     function constructRangesTableSettings() {
         self.rangeTableSettings = {
             colHeaders: self.rangesData.cols,
-            stretchH: "all",
-            readOnly: false,
-            afterChange: rangeAfterChangeHandler
+            readOnly: false
         };
-    }
-
-    function rangeAfterChangeHandler(changes, source) {
-
-        if (source !== 'loadData') {
-            console.log('Range modified!');
-        }
     }
 }
 

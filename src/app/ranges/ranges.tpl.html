@@ -14,20 +14,27 @@
     </div>
 
 
+
     <!-- Test controls-->
+    <br>
     <input type="checkbox" ng-model="rangesCtrl.rangeTableSettings.readOnly">Readonly
 
     &nbsp;&nbsp;&nbsp;
 
     <input type="checkbox" ng-model="rangesCtrl.rangeTableSettings.columns[1].readOnly">Readonly Column #2
 
-    {{rangesCtrl.rangeTableSettings.columns[1].readOnly}}
+    <br><br>
+    <label>Column #3 type</label>
+    <select ng-model="rangesCtrl.rangeTableSettings.columns[2].type">
+        <option value="text">Text</option>
+        <option value="date">Date</option>
+    </select>
 
     <br><br><br>
 
-    <button class="btn btn-primary" ng-click="updateSettings()">Reset settings</button>
+    <button class="btn btn-primary" ng-click="hot.updateSettings()">Reset settings</button>
 
-    <button class="btn btn-primary" ng-click="refreshDataSheet()">Re-render table</button>
+    <button class="btn btn-primary" ng-click="hot.refreshDataSheet()">Re-render table</button>
 
     <br><br><br>
 

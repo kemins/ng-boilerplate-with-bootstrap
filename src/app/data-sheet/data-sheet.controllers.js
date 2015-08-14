@@ -1,7 +1,7 @@
 angular.module('ftw.data-sheet.controllers', []).
-    controller('DataSheetCtrl', ['$log', '$scope', 'settingFactory', DataSheetCtrl]);
+    controller('DataSheetCtrl', ['$log', '$scope', 'dataSheetService', DataSheetCtrl]);
 
-function DataSheetCtrl($log, $scope, settingFactory) {
+function DataSheetCtrl($log, $scope, dataSheetService) {
 
     var self = this;
 
@@ -14,10 +14,12 @@ function DataSheetCtrl($log, $scope, settingFactory) {
 
         $scope.afterChangeHandler = afterChangeHandler;
         $scope.cellPropertiesFactory = cellPropertiesFactory;
+        $scope.cleanup = cleanup;
 
         //Expose to parent scope as we in isolate scope right now.
-        $scope.$parent.refreshDataSheet = refreshDataSheet;
-        $scope.$parent.updateSettings = updateSettings;
+        $scope.$parent.hot = $scope.$parent.hot || {};
+        $scope.$parent.hot.refreshDataSheet = refreshDataSheet;
+        $scope.$parent.hot.updateSettings = updateSettings;
 
         $scope.$watch('config', updateSettings);
         $scope.$watch('datasource', updateDataSource);
@@ -33,7 +35,7 @@ function DataSheetCtrl($log, $scope, settingFactory) {
             var newOptions = angular.extend({}, $scope.config);
             newOptions.data = $scope.datasource;
 
-            settingFactory.updateHandsontableSettings($scope.hotInstance, newOptions);
+            dataSheetService.updateSettings($scope.hotInstance, newOptions);
         }
     }
 
@@ -74,6 +76,14 @@ function DataSheetCtrl($log, $scope, settingFactory) {
      * Re-render handson table
      * */
     function refreshDataSheet() {
-        settingFactory.renderHandsontable($scope.hotInstance);
+        dataSheetService.render($scope.hotInstance);
+    }
+
+    /*
+    * Invoked once directive is destroyed
+    * */
+    function cleanup() {
+        $scope.$parent.hot.refreshDataSheet = null;
+        $scope.$parent.hot.updateSettings = null;
     }
 }

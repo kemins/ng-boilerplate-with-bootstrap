@@ -1,7 +1,7 @@
-angular.module('ftw.data-sheet.directives', ['ngHandsontable'])
-    .directive('ftwDataSheet', ['$log', 'settingFactory', function ($log, settingFactory) {
+angular.module('ftw.data-sheet.directives', [])
+    .directive('ftwDataSheet', ['$log', 'dataSheetService', function ($log, dataSheetService) {
         return {
-            link: function (scope, element, attrs, hotTableCtrl) {
+            link: function (scope, element, attrs) {
 
                 var initOptions = {
                     currentRowClassName: 'selected-row', stretchH: 'all',
@@ -10,7 +10,11 @@ angular.module('ftw.data-sheet.directives', ['ngHandsontable'])
                     cells: scope.cellPropertiesFactory
                 };
 
-                scope.hotInstance = settingFactory.initializeHandsontable(element, initOptions);
+                scope.hotInstance = dataSheetService.createTable(element, initOptions);
+
+                $scope.$on("$destroy", function () {
+                    $scope.cleanup();
+                });
             },
 
             controller: 'DataSheetCtrl',

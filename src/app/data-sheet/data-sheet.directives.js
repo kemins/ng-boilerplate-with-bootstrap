@@ -3,25 +3,33 @@ angular.module('ftw.data-sheet.directives', [])
         return {
             link: function (scope, element, attrs) {
 
-                var initOptions = {
-                    currentRowClassName: 'selected-row', stretchH: 'all',
-                    afterChange: scope.afterChangeHandler,
-                    readOnly: true,
-                    cells: scope.cellPropertiesFactory
-                };
-
-                scope.hotInstance = dataSheetService.createTable(element, initOptions);
-
-                $scope.$on("$destroy", function () {
-                    $scope.cleanup();
+                scope.$on("$destroy", function () {
+                    scope.cleanup();
                 });
+
+                updateDimensions();
+                scope.createHot(element[0]);
+
+                Handsontable.Dom.addEvent(window, 'resize', resizeHandler);
+
+                function resizeHandler() {
+                    updateDimensions();
+                    scope.createHot(element[0]);
+                }
+
+                function updateDimensions() {
+                    var dimensions = dataSheetService.calculateSize(element[0]);
+
+                    scope.hotWidth = dimensions.width;
+                    scope.hotHeight = dimensions.height;
+                }
             },
 
             controller: 'DataSheetCtrl',
             controllerAs: 'dataSheetCtrl',
             template: "<div></div>",
             restrict: 'E',
-            replace: true,
+            replace: false,
             scope: {
                 config: '=',
                 datasource: '='

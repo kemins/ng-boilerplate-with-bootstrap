@@ -1,41 +1,49 @@
 <div class="expanded-container">
 
     <style>
-        .table-wrapper {
-            height: 80%;
-            overflow: auto;
+        ftw-data-sheet {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 150px;
+            top: 0;
+        }
+
+        .control-panel {
+            position: absolute;
+            bottom: 0;
+            height: 150px;
         }
     </style>
 
-    <div class="table-wrapper">
-        <ftw-data-sheet config="rangesCtrl.rangeTableSettings"
-                        datasource="rangesCtrl.rangesData.data">
-        </ftw-data-sheet>
-    </div>
 
+    <ftw-data-sheet config="rangesCtrl.rangeTableSettings"
+                    datasource="rangesCtrl.rangesData.data">
+    </ftw-data-sheet>
 
 
     <!-- Test controls-->
-    <br>
-    <input type="checkbox" ng-model="rangesCtrl.rangeTableSettings.readOnly">Readonly
+    <div class="control-panel">
+        <input type="checkbox" ng-model="rangesCtrl.rangeTableSettings.readOnly">Readonly
 
-    &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
 
-    <input type="checkbox" ng-model="rangesCtrl.rangeTableSettings.columns[1].readOnly">Readonly Column #2
+        <input type="checkbox" ng-model="rangesCtrl.rangeTableSettings.columns[1].readOnly">Readonly Column #2
 
-    <br><br>
-    <label>Column #3 type</label>
-    <select ng-model="rangesCtrl.rangeTableSettings.columns[2].type">
-        <option value="text">Text</option>
-        <option value="date">Date</option>
-    </select>
+        <br><br>
 
-    <br><br><br>
+        <label>Column #3 type</label>
+        <select ng-model="rangesCtrl.rangeTableSettings.columns[2].type">
+            <option value="text">Text</option>
+            <option value="date">Date</option>
+        </select>
 
-    <button class="btn btn-primary" ng-click="hot.updateSettings()">Reset settings</button>
+        <br><br>
 
-    <button class="btn btn-primary" ng-click="hot.refreshDataSheet()">Re-render table</button>
+        <button class="btn btn-primary" ng-click="hot.updateSettings()">Reset settings</button>
 
-    <br><br><br>
+        <button class="btn btn-primary" ng-click="hot.refreshDataSheet()">Re-render table</button>
+
+    </div>
 
 </div>

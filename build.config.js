@@ -80,6 +80,7 @@ module.exports = {
       'vendor/handsontable/dist/handsontable.full.js',
       'vendor/ngHandsontable/dist/ngHandsontable.js',
       'vendor/angular-animate/angular-animate.js',
+      'vendor/ng-resize/ngresize.js',
     ],
     css: [
       'vendor/handsontable/dist/handsontable.full.css'

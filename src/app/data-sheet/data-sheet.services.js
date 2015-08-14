@@ -11,9 +11,18 @@ function DataSheetService() {
             var container = document.createElement('DIV');
 
             container.className = this.containerClassName;
-            element[0].appendChild(container);
+            element.appendChild(container);
 
             return new Handsontable(container, settings);
+        },
+
+        destroyTable: function (element, instance) {
+            if (instance) {
+                instance.destroy();
+                $(element).find('.handsontable-container').remove();
+                return true;
+            }
+            return false;
         },
 
         updateSettings: function (instance, settings) {
@@ -26,6 +35,16 @@ function DataSheetService() {
             if (instance) {
                 instance.render();
             }
+        },
+
+        calculateSize: function (element) {
+            var offset;
+
+            offset = Handsontable.Dom.offset(element);
+            var availableWidth = Handsontable.Dom.innerWidth(element) - offset.left + (window.scrollX || 0);
+            var availableHeight = Handsontable.Dom.innerHeight(element) - offset.top + (window.scrollY || 0);
+
+            return {width: availableWidth, height: availableHeight};
         }
     };
 }

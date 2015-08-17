@@ -1,0 +1,54 @@
+@require "colors"
+@require "defaults"
+@require "mixins"
+@require "defaults"
+
+table-header-height = 34px
+table-td-height = 39px
+
+table-header-background = main-color9
+table-header-cell-padding = 0 20px 0 15px
+table-row-border-color = main-color5
+table-row-current-highlight = main-color14
+table-row-background = main-color1
+table-list-box-item-height = 20px
+table-corner-color = main-color4
+table-default-highlight-darker = color6
+
+
+#{project-selector}
+ thead, .table-header
+    tr, .row
+      th, .cell
+        background-color table-header-background
+        border-color transparent
+        color default-color-on-dark
+        text-align left
+        &:last-child
+          border-right 1px solid table-header-background
+        padding table-header-cell-padding
+        full-height(table-header-height)
+
+  tbody, .table-body
+    tr, .row
+
+      td, th, .cell
+        full-height(table-td-height)
+        overflow visible
+        position relative
+        border-bottom 1px solid table-row-border-color
+        vertical-align middle
+        background-color table-row-background
+
+      td, .cell
+
+        padding-left 15px
+        border-right-color transparent
+        &:first-child
+          border-left 1px solid table-row-border-color
+
+        &l:ast-child
+          border-right 1px solid table-row-border-color
+
+      .highlight
+        background-color table-default-highlight-darker

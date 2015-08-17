@@ -1,0 +1,66 @@
+@require 'configs'
+@require 'colors'
+@require 'defaults'
+@require 'table'
+@require 'data-sheet'
+@require '../common/feedbacks'
+@require '../common/navigation'
+
+
+validation-color = maroon
+
+footer-height = 30px
+
+root-left-padding = 16px
+root-right-padding = 16px
+
+navbar-height = 50px
+
+html, body
+  padding 0
+  margin 0
+  height 100%
+
+  form
+    padding-top 5px
+
+  body
+    color #5a5a5a
+    font-family 'AdiHausRegular'
+
+    .page-wrap
+      min-height 100%
+      margin-bottom -1*footer-height
+
+      > .view
+        padding-top navbar-height
+
+      &:after
+        content ""
+        display block
+        position relative
+        height footer-height
+
+    .expanded-container
+      position absolute
+      top navbar-height
+      bottom footer-height
+      left root-left-padding
+      right root-right-padding;
+
+
+    navigation-bar
+      position absolute
+      width 100%
+
+    footer-bar
+      height footer-height
+
+    ng-messages
+      color validation-color
+      > div
+        padding-top 10px
+        font-style italic
+
+    .view
+      margin 0

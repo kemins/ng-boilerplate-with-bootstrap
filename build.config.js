@@ -30,7 +30,8 @@ module.exports = {
     ctpl: [ 'src/common/**/*.tpl.html' ],
 
     html: [ 'src/index.html' ],
-    less: 'src/less/main.less'
+    less: 'src/less/main.less',
+    stylus: 'src/stylus/main.styl'
   },
 
   /**
@@ -80,9 +81,10 @@ module.exports = {
       'vendor/handsontable/dist/handsontable.full.js',
       'vendor/ngHandsontable/dist/ngHandsontable.js',
       'vendor/angular-animate/angular-animate.js',
-      'vendor/ng-resize/ngresize.js',
+      'vendor/ng-resize/ngresize.js'
     ],
     css: [
+      'vendor/bootstrap/dist/css/bootstrap.css',
       'vendor/handsontable/dist/handsontable.full.css'
     ],
     assets: [

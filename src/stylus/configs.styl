@@ -1,0 +1,18 @@
+project-selector = "ftw-app"
+project-class-selector = ".ftw-app"
+projectIconsName = "ftw-icons"
+baseZIndex = 555
+z-layers = {
+  overlay: {
+    base: baseZIndex,
+    below: baseZIndex - 1,
+    overlap: baseZIndex + 1,
+    notification: baseZIndex + 2
+  },
+  popup: baseZIndex + 1
+  notification: 1000
+  tooltip: baseZIndex - 1
+  columnManager: baseZIndex + 1,
+  columnsSets: baseZIndex,
+  pagination: 2
+}

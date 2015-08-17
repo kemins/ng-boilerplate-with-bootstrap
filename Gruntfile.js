@@ -18,6 +18,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ng-annotate');
   grunt.loadNpmTasks('grunt-html2js');
+  grunt.loadNpmTasks('grunt-contrib-stylus');
 
   /**
    * Load in our build configuration file.
@@ -266,11 +267,23 @@ module.exports = function ( grunt ) {
       },
       compile: {
         files: {
-          '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.less %>'
+          '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.stylus %>'
         },
         options: {
           cleancss: true,
           compress: true
+        }
+      }
+    },
+
+    stylus: {
+      build: {
+        options: {
+          'include css': true,
+          paths: ['src/stylus/']
+        },
+        files: {
+          '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.stylus %>'
         }
       }
     },
@@ -568,7 +581,7 @@ module.exports = function ( grunt ) {
    * The `build` task gets your app ready to run for development and testing.
    */
   grunt.registerTask( 'build', [
-    'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build',
+    'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'stylus:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendorcss', 'index:build', 'karmaconfig',
     'karma:continuous' 
@@ -579,7 +592,7 @@ module.exports = function ( grunt ) {
    * minifying your code.
    */
   grunt.registerTask( 'compile', [
-    'less:compile', 'copy:compile_assets', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile'
+    'stylus:build', 'copy:compile_assets', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile'
   ]);
 
   /**

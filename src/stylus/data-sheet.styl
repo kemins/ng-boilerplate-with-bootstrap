@@ -1,0 +1,66 @@
+@require "defaults";
+@require "colors";
+@require "configs";
+
+hoy-cell-bg-not-editable-color = D6DBB8
+hot-current-row-bg-color = #D6DBB8
+hot-cell-border-color = main-color16
+hot-cell-color = #666666
+hot-cell-height = 40px
+hot-cell-bg-not-editable-color = #F1F1F1
+
+
+hot-header-border-color = main-color13
+hot-header-color = main-color1
+hot-header-cell-padding = 0 10px 0 10px
+hot-header-cell-height = 34px
+
+#{project-selector}
+
+  ftw-data-sheet
+    display block
+    width 100%
+
+    .handsontable
+      .wtBorder
+        background-color table-caret-color !important
+      thead, .table-header
+        tr, .row
+          th
+            border-top 0
+            border-bottom 0
+            border-right 1px solid hot-header-border-color
+            color hot-header-color
+            text-align left
+            overflow hidden
+            text-overflow ellipsis
+            white-space nowrap
+            padding 0
+
+            .relative
+              padding hot-header-cell-padding
+              height hot-header-cell-height
+              line-height hot-header-cell-height
+
+      tbody
+        tr
+          td
+            padding-left 10px
+            border-bottom 1px solid hot-cell-border-color
+            border-right: 1px solid hot-cell-border-color
+            color hot-cell-color
+
+            height hot-cell-height
+            line-height hot-cell-height
+            position relative
+            vertical-align middle
+            text-align left
+
+
+          .selected-row
+            background-color hot-current-row-bg-color
+
+          .htDimmed
+            background-color hot-cell-bg-not-editable-color
+            font-style italic
+

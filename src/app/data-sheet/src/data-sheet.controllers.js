@@ -21,6 +21,7 @@ function DataSheetCtrl($log, $scope, $timeout, dataSheetService) {
 
     this.initHotOptions = {
         currentRowClassName: 'selected-row',
+        currentColClassName: 'selected-col',
         afterChange: afterChangeHandler,
         readOnly: true,
         cells: cellPropertiesFactory
@@ -44,7 +45,7 @@ function DataSheetCtrl($log, $scope, $timeout, dataSheetService) {
         $scope.$watch('datasource', updateDataSource);
 
         $scope.$on("$destroy", function () {
-            self.cleanup();
+            cleanup();
         });
     }
 

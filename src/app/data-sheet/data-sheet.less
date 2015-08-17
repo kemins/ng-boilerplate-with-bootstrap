@@ -6,10 +6,13 @@
 @hot-header-cell-height: 34px;
 
 /* Item Cell properties*/
-@hot-cell-bg-color: #F1F1F1;
+@hot-cell-bg-color: #ffffff;
+@hot-cell-bg-not-editable-color: #F1F1F1;
+
 @hot-cell-color: #666666;
 @hot-cell-border-color: #ccc;
 @hot-cell-height: 40px;
+@hot-caret-color: #bfc976;
 
 @hot-current-bg-color: #D6DBB8;
 @hot-current-row-bg-color: #D6DBB8;
@@ -86,8 +89,16 @@ ftw-data-sheet {
           .selected-row {
             background-color: @hot-current-row-bg-color;
           }
+
+          .htDimmed {
+            background-color: @hot-cell-bg-not-editable-color;
+          }
         }
       }
+    }
+
+    .wtBorder {
+      background-color: @hot-caret-color !important;
     }
 
   }

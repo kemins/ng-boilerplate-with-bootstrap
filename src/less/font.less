@@ -1,0 +1,24 @@
+@adi-font-path:        "fonts";
+
+
+.font-face(@name, @p, @font) {
+  font-family: '@{name}';
+  src: url('@{p}/@{font}.eot');
+  src: url('@{p}/@{font}?#iefix') format('embedded-opentype'),
+    url('@{p}/@{font}.woff') format('woff'),
+    url('@{p}/@{font}.ttf') format('truetype'),
+    url('@{p}/@{font}.svg}') format('svg');
+  font-weight: 700;
+}
+
+@font-face {
+  .font-face('AdiHausRegular', @adi-font-path, 'adihaus_regular');
+}
+
+@font-face {
+  .font-face('AdiHausBold', @adi-font-path, 'adihaus_bold');
+}
+
+@font-face {
+  .font-face('ftw-icons', @adi-font-path, 'icons');
+}

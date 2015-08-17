@@ -1,10 +1,8 @@
 <div class="expanded-container">
 
     <style>
-        ftw-data-sheet {
+        .ranges-data-sheet {
             position: absolute;
-            left: 0;
-            right: 0;
             bottom: 150px;
             top: 0;
         }
@@ -12,13 +10,13 @@
         .control-panel {
             position: absolute;
             bottom: 0;
-            height: 150px;
         }
     </style>
 
 
     <ftw-data-sheet config="rangesCtrl.rangeTableSettings"
-                    datasource="rangesCtrl.rangesData.data">
+                    datasource="rangesCtrl.rangesData.data"
+                    class="ranges-data-sheet">
     </ftw-data-sheet>
 
 

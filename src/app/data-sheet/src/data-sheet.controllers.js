@@ -9,10 +9,10 @@ function DataSheetCtrl($log, $scope, $timeout, dataSheetService) {
      * Avoid useless update operations
      *
      * */
-    this.UPDATE_SETTING_SDELAY = 50;//ms
+    this.UPDATE_SETTINGS_DELAY = 50;//ms
 
     /*
-     * Avoid useless recreation for instance during resizing
+     * Avoid useless recreation (for instance during resizing)
      * */
     this.RECREATE_HOT_DELAY = 100;//ms
 
@@ -33,24 +33,28 @@ function DataSheetCtrl($log, $scope, $timeout, dataSheetService) {
      * */
     function init() {
 
-        $scope.cleanup = cleanup;
-        $scope.refreshDataSheet = refreshDataSheet;
         $scope.createHot = createHot;
 
-        //Expose to parent scope as we in isolate scope right now.
+        //Expose to parent scope as we're in isolate scope right now.
         $scope.$parent.hot = $scope.$parent.hot || {};
         $scope.$parent.hot.refreshDataSheet = refreshDataSheet;
         $scope.$parent.hot.updateSettings = updateSettings;
 
         $scope.$watch('config', updateSettings);
         $scope.$watch('datasource', updateDataSource);
+
+        $scope.$on("$destroy", function () {
+            self.cleanup();
+        });
     }
 
 
     /*
-     * Creating or recreating our hot
+     * Creating or recreating the hot
      * */
     function createHot(element) {
+
+        setDimensions(element);
 
         if (self.recreateHotPromise) {
             $timeout.cancel(self.recreateHotPromise);
@@ -68,7 +72,7 @@ function DataSheetCtrl($log, $scope, $timeout, dataSheetService) {
     }
 
     /*
-     * Update settings for hot table
+     * Update settings for hot
      * */
     function updateSettings() {
 
@@ -83,7 +87,7 @@ function DataSheetCtrl($log, $scope, $timeout, dataSheetService) {
                 $log.debug('resetting settings for data sheet');
                 dataSheetService.updateSettings($scope.hotInstance, computeHotOptions());
             }
-        }, self.UPDATE_SETTING_SDELAY);
+        }, self.UPDATE_SETTINGS_DELAY);
     }
 
     /*
@@ -136,27 +140,34 @@ function DataSheetCtrl($log, $scope, $timeout, dataSheetService) {
 
 
     /*
-     * Options is passed while creating hot
+     * Options are passed while creating a hot
      * */
     function getInitOptions() {
-        var initOptions = {
+        return {
             currentRowClassName: 'selected-row',
             afterChange: afterChangeHandler,
-            cells: cellPropertiesFactory
+            cells: cellPropertiesFactory,
+            width: self.hotWidth,
+            height: self.hotHeight
         };
-
-        initOptions.width = $scope.hotWidth;
-        initOptions.height = $scope.hotHeight;
-
-        return initOptions;
     }
 
     /*
-     * Concat config options with creation options
+     * Concat config options with init(creation) options
      * */
     function computeHotOptions() {
         var options = angular.extend(getInitOptions(), $scope.config);
         options.data = $scope.datasource;
         return options;
+    }
+
+    /*
+     * Set dimensions for hot
+     * */
+    function setDimensions(element) {
+        var dimensions = dataSheetService.calculateSize(element);
+
+        self.hotWidth = dimensions.width;
+        self.hotHeight = dimensions.height;
     }
 }

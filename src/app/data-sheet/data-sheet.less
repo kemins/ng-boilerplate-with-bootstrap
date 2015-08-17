@@ -14,76 +14,81 @@
 @hot-current-bg-color: #D6DBB8;
 @hot-current-row-bg-color: #D6DBB8;
 
-.handsontable-container  {
-  overflow: auto;
-}
+ftw-data-sheet {
+  display: block;
+  width: 100%;
 
-.handsontable {
+  .handsontable-container  {
+    overflow: auto;
+  }
 
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
+  .handsontable {
 
-  table {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
 
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    table {
 
-    thead {
-      tr {
-        th {
-          background-color: @hot-header-bg-color;
-          border-color: transparent;
-          border-top: 0;
-          border-bottom: 0;
-          border-right: 1px solid @hot-header-border-color;
-          color: @hot-header-color;
-          text-align: left;
+      -webkit-box-shadow: none;
+      box-shadow: none;
 
-          .relative {
-            padding: @hot-header-cell-padding;
-            height: @hot-header-cell-height;
-            line-height: @hot-header-cell-height;
+      thead {
+        tr {
+          th {
+            background-color: @hot-header-bg-color;
+            border-color: transparent;
+            border-top: 0;
+            border-bottom: 0;
+            border-right: 1px solid @hot-header-border-color;
+            color: @hot-header-color;
+            text-align: left;
+
+            .relative {
+              padding: @hot-header-cell-padding;
+              height: @hot-header-cell-height;
+              line-height: @hot-header-cell-height;
+            }
+          }
+        }
+      }
+
+      th, td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 0;
+      }
+
+      tbody {
+        tr {
+          td {
+            padding-left: 10px;
+            border-bottom: 1px solid @hot-cell-border-color;
+            font-style: italic;
+            color: @hot-cell-color;
+            background-color: @hot-cell-bg-color;
+
+            height: @hot-cell-height;
+            line-height: @hot-cell-height;
+            position: relative;
+            vertical-align: middle;
+            text-align: left;
+          }
+
+          .current {
+            background-color: @hot-current-bg-color;
+          }
+
+          .selected-row {
+            background-color: @hot-current-row-bg-color;
           }
         }
       }
     }
 
-    th, td {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      padding: 0;
-    }
-
-    tbody {
-      tr {
-        td {
-          padding-left: 10px;
-          border-bottom: 1px solid @hot-cell-border-color;
-          font-style: italic;
-          color: @hot-cell-color;
-          background-color: @hot-cell-bg-color;
-
-          height: @hot-cell-height;
-          line-height: @hot-cell-height;
-          position: relative;
-          vertical-align: middle;
-          text-align: left;
-        }
-
-        .current {
-          background-color: @hot-current-bg-color;
-        }
-
-        .selected-row {
-          background-color: @hot-current-row-bg-color;
-        }
-      }
-    }
   }
-
 }

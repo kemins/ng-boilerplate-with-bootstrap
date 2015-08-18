@@ -1,60 +1,31 @@
 @require "configs"
 
-absolute(top = 0, left = 0, right = 0, bottom =0)
-    position  absolute
-    top top
-    left left
-    right right
-    bottom bottom
+absolute(top = 0, left = 0, right = 0, bottom = 0)
+  position absolute
+  top top
+  left left
+  right right
+  bottom bottom
 
 full-height(height)
-    height height
-    line-height height
+  height height
+  line-height height
 
-scale(scale)
-    -moz-transform scale(scale)
-    -o-transform scale(scale)
-    -ms-transform scale(scale)
-    -webkit-transform scale($scale)
-    transform scale($scale)
+scale(value)
+  -moz-transform scale(value)
+  -o-transform scale(value)
+  -ms-transform scale(value)
+  -webkit-transform scale(value)
+  transform scale(value)
 
-backface-visibility(arguments)
-    -webkit-backface-visibility arguments
-    -moz-backface-visibility arguments
-    -ms-backface-visibility arguments
-    -o-backface-visibility arguments
-    backface-visibility arguments
+z(keys)
 
-/*cell-width(columns-number) {
-    table-width = 100%
-    cell-width = table-width/columns-number - 3%
+  result =  z-layers;
 
-    .cell
-        width cell-width
-    &:nth-child(1)
-        width cell-width - 6%
-    &:nth-child(2)
-        width cell-width + 2%
-    &:nth-child(3)
-        width cell-width - 2%
-    &:nth-child(#{columns-number - 1}) {
-         width cell-width + 20%
-     }
-    &:nth-child(#{columns-number}) {
-         width cell-width + 7%
-     }*/
+  for key in keys
+    if (result[key] == null)
+      error("Key not found in z-layers map")
 
+    result = result[key]
 
-/*
-@function z($keys) {
-$result: $z-layers;
-    @each $key in $keys {
-        @if not map-has-key($result, $key) {
-        @warn "No nested layer found for `#{$key}` in $z-layers map. Property omitted.";
-        }
-    $result: map-get($result, $key);
-    }
-
-    @return $result;
-};
-*/
+  return result
